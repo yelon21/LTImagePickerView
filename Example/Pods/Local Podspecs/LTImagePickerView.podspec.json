@@ -1,0 +1,23 @@
+{
+  "name": "LTImagePickerView",
+  "version": "0.1.0",
+  "summary": "A short description of LTImagePickerView.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/yelon21/LTImagePickerView",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "254956982@qq.com": "yelon21"
+  },
+  "source": {
+    "git": "https://github.com/yelon21/LTImagePickerView.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "source_files": "LTImagePickerView/Classes/**/*",
+  "resources": "LTImagePickerView/Assets/*.{xib,png}"
+}

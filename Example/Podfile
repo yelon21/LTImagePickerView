@@ -1,0 +1,11 @@
+
+
+target 'LTImagePickerView_Example' do
+  pod 'LTImagePickerView', :path => '../'
+
+  target 'LTImagePickerView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

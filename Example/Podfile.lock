@@ -1,0 +1,16 @@
+PODS:
+  - LTImagePickerView (0.1.0)
+
+DEPENDENCIES:
+  - LTImagePickerView (from `../`)
+
+EXTERNAL SOURCES:
+  LTImagePickerView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  LTImagePickerView: 10e7a157050fbb682deb2a10f818a69ce3ebbccf
+
+PODFILE CHECKSUM: e8ced2e61ee7c85e7130089e2a322c08dbd2c7bd
+
+COCOAPODS: 1.2.0.beta.1

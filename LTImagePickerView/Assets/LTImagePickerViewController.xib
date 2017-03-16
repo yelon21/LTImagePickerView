@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina3_5" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LTImagePickerViewController">
+            <connections>
+                <outlet property="closeBtn" destination="uQ2-kg-K1Z" id="tDJ-vM-DS9"/>
+                <outlet property="cvoerView" destination="n59-6U-H5j" id="gg1-ea-l6V"/>
+                <outlet property="doneBtn" destination="HH2-Hr-ZmY" id="DgQ-KT-T1A"/>
+                <outlet property="imagePicker" destination="qmU-af-G6h" id="PPb-8v-F2e"/>
+                <outlet property="perviewImageView" destination="wQL-sP-U7K" id="yi2-j4-Jih"/>
+                <outlet property="retakePhotoBtn" destination="jfx-su-FBO" id="D86-Hg-gvo"/>
+                <outlet property="takePhotoBtn" destination="oLg-X2-vNf" id="zka-mj-GM2"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmU-af-G6h" customClass="LTImagePickerView">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wQL-sP-U7K">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n59-6U-H5j" customClass="LTImagePickerCover">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4hK-Gn-9ab">
+                    <rect key="frame" x="420" y="0.0" width="60" height="320"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLg-X2-vNf">
+                            <rect key="frame" x="5" y="138" width="50" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="ZXu-oK-h1Y"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" image="btn_cameraTake.png"/>
+                            <connections>
+                                <action selector="takePhotoAction:" destination="-1" eventType="touchDown" id="NSf-RX-B3C"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HH2-Hr-ZmY">
+                            <rect key="frame" x="8" y="98" width="44" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="EQJ-3A-02h"/>
+                                <constraint firstAttribute="width" constant="44" id="ODl-wP-pBR"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="完成"/>
+                            <connections>
+                                <action selector="doneAction:" destination="-1" eventType="touchUpInside" id="sVt-KW-Jno"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfx-su-FBO">
+                            <rect key="frame" x="8" y="192" width="44" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="mur-8i-n4Q"/>
+                                <constraint firstAttribute="width" constant="44" id="uSz-pP-dVN"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="重拍"/>
+                            <connections>
+                                <action selector="retakePhotoAction:" destination="-1" eventType="touchUpInside" id="51L-wG-gRJ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="oLg-X2-vNf" firstAttribute="centerY" secondItem="4hK-Gn-9ab" secondAttribute="centerY" id="JS1-We-KdM"/>
+                        <constraint firstAttribute="width" constant="60" id="Lck-TI-VRE"/>
+                        <constraint firstItem="jfx-su-FBO" firstAttribute="top" secondItem="oLg-X2-vNf" secondAttribute="bottom" constant="10" id="NEn-BN-RfF"/>
+                        <constraint firstItem="HH2-Hr-ZmY" firstAttribute="centerX" secondItem="4hK-Gn-9ab" secondAttribute="centerX" id="RE0-fm-rI9"/>
+                        <constraint firstItem="oLg-X2-vNf" firstAttribute="top" secondItem="HH2-Hr-ZmY" secondAttribute="bottom" constant="10" id="Vuw-ri-5qA"/>
+                        <constraint firstItem="oLg-X2-vNf" firstAttribute="leading" secondItem="4hK-Gn-9ab" secondAttribute="leading" constant="5" id="WH0-TK-EkP"/>
+                        <constraint firstAttribute="trailing" secondItem="oLg-X2-vNf" secondAttribute="trailing" constant="5" id="Wch-DX-QqT"/>
+                        <constraint firstItem="jfx-su-FBO" firstAttribute="centerX" secondItem="4hK-Gn-9ab" secondAttribute="centerX" id="vyp-Tg-eAF"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQ2-kg-K1Z">
+                    <rect key="frame" x="10" y="20" width="50" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="5AN-xv-vml"/>
+                        <constraint firstAttribute="height" constant="44" id="aUZ-pb-sSp"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" image="btn_close_x.png"/>
+                    <connections>
+                        <action selector="closeAction:" destination="-1" eventType="touchUpInside" id="oF2-xf-lZ2"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="wQL-sP-U7K" firstAttribute="trailing" secondItem="qmU-af-G6h" secondAttribute="trailing" id="0dn-ZY-b2D"/>
+                <constraint firstAttribute="bottom" secondItem="qmU-af-G6h" secondAttribute="bottom" id="3dZ-53-Qjk"/>
+                <constraint firstItem="n59-6U-H5j" firstAttribute="trailing" secondItem="qmU-af-G6h" secondAttribute="trailing" id="JVw-T9-szB"/>
+                <constraint firstItem="n59-6U-H5j" firstAttribute="bottom" secondItem="qmU-af-G6h" secondAttribute="bottom" id="KLs-ox-VvF"/>
+                <constraint firstAttribute="trailing" secondItem="qmU-af-G6h" secondAttribute="trailing" id="Lc6-Gq-QCa"/>
+                <constraint firstItem="wQL-sP-U7K" firstAttribute="bottom" secondItem="qmU-af-G6h" secondAttribute="bottom" id="OWC-f3-sBN"/>
+                <constraint firstItem="wQL-sP-U7K" firstAttribute="leading" secondItem="qmU-af-G6h" secondAttribute="leading" id="X5a-g6-kIp"/>
+                <constraint firstAttribute="bottom" secondItem="4hK-Gn-9ab" secondAttribute="bottom" id="Xzk-ts-Sj2"/>
+                <constraint firstItem="4hK-Gn-9ab" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YFC-Z0-byD"/>
+                <constraint firstItem="qmU-af-G6h" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YU5-k0-r2t"/>
+                <constraint firstItem="qmU-af-G6h" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cD3-TK-nAP"/>
+                <constraint firstItem="uQ2-kg-K1Z" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="hWi-pF-kxs"/>
+                <constraint firstAttribute="trailing" secondItem="4hK-Gn-9ab" secondAttribute="trailing" id="oHg-Tl-1Ef"/>
+                <constraint firstItem="n59-6U-H5j" firstAttribute="leading" secondItem="qmU-af-G6h" secondAttribute="leading" id="qaN-gs-f7U"/>
+                <constraint firstItem="uQ2-kg-K1Z" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="sFY-Nq-oKI"/>
+                <constraint firstItem="n59-6U-H5j" firstAttribute="top" secondItem="qmU-af-G6h" secondAttribute="top" id="tj4-ca-bmU"/>
+                <constraint firstItem="wQL-sP-U7K" firstAttribute="top" secondItem="qmU-af-G6h" secondAttribute="top" id="yQM-Jj-CEZ"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn_cameraTake.png" width="44" height="44"/>
+        <image name="btn_close_x.png" width="25" height="25"/>
+    </resources>
+</document>
