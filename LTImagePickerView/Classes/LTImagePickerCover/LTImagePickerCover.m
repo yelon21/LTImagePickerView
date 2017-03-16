@@ -42,7 +42,7 @@
 - (void)setup{
     
     self.backgroundColor = [UIColor clearColor];
-    
+    self.userInteractionEnabled = NO;
     self.baseLayer = [CALayer layer];
     self.baseLayer.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.45].CGColor;
     

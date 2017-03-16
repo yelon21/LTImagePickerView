@@ -10,12 +10,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../LTImagePickerView/Classes/LTImagePickerView.m"
-            timestampString = "511334314.791622"
+            timestampString = "511340062.206669"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "-layoutSubviews"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "-focusAtPoint:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../LTImagePickerView/Classes/LTImagePickerView.m"
+            timestampString = "511340062.206669"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "-tapGestureAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

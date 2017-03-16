@@ -95,8 +95,13 @@
         if ([self.device isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeAutoWhiteBalance]) {
             [self.device setWhiteBalanceMode:AVCaptureWhiteBalanceModeAutoWhiteBalance];
         }
+        
         [self.device unlockForConfiguration];
     }
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGestureAction:)];
+    tapGesture.numberOfTapsRequired = 1;
+    [self addGestureRecognizer:tapGesture];
 }
 
 - (AVCaptureVideoOrientation) videoOrientationFromCurrentDeviceOrientation {
@@ -120,6 +125,37 @@
 }
 
 #pragma mark private
+- (void)tapGestureAction:(UITapGestureRecognizer*)gesture{
+    
+    CGPoint point = [gesture locationInView:gesture.view];
+    [self focusAtPoint:point];
+}
+
+- (void)focusAtPoint:(CGPoint)point{
+    
+    CGSize size = self.bounds.size;
+    
+    CGPoint focusPoint = CGPointMake( point.y /size.height ,1-point.x/size.width );
+    
+    NSError *error;
+    if ([self.device lockForConfiguration:&error]) {
+        
+        if ([self.device isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
+            [self.device setFocusPointOfInterest:focusPoint];
+            [self.device setFocusMode:AVCaptureFocusModeAutoFocus];
+        }
+        
+        if ([self.device isExposureModeSupported:AVCaptureExposureModeAutoExpose ]) {
+            [self.device setExposurePointOfInterest:focusPoint];
+            [self.device setExposureMode:AVCaptureExposureModeAutoExpose];
+        }
+        
+        [self.device unlockForConfiguration];
+        
+    }
+    
+}
+
 - (void)lt_takePhoto{
 
     if (self.session.isRunning) {

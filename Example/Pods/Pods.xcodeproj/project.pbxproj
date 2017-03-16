@@ -32,13 +32,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12CC75A8FEC7E7AC661E9A935D40A2AF /* LTImagePickerViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = LTImagePickerViewController.xib; sourceTree = "<group>"; };
 		1EED9320748AF5B138A8238768D3F083 /* LTImagePickerView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LTImagePickerView-prefix.pch"; sourceTree = "<group>"; };
 		278835418A01C67A75A24C8E86E9217F /* Pods-LTImagePickerView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LTImagePickerView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		3B4C3E256563E4466B47E0FC0BBA49E2 /* Pods-LTImagePickerView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LTImagePickerView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		3CD0D8D940B7A9EF6B7D38E8624DCABB /* Pods-LTImagePickerView_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LTImagePickerView_Tests-resources.sh"; sourceTree = "<group>"; };
 		42B46A981C906DC67CAE4AF70180490F /* LTImagePickerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LTImagePickerView.m; sourceTree = "<group>"; };
-		44FC793CB1703A187E82E320B95D6ACB /* btn_cameraTake@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "btn_cameraTake@2x.png"; sourceTree = "<group>"; };
-		50A449124E11BAF217691373034A3C48 /* LTImagePickerViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = LTImagePickerViewController.xib; sourceTree = "<group>"; };
 		5894F709E7210A7BD9EC6C518CE7239E /* Pods-LTImagePickerView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LTImagePickerView_Example-frameworks.sh"; sourceTree = "<group>"; };
 		654E0022EE5BD55B7FB82BB2C82AB0A8 /* libLTImagePickerView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libLTImagePickerView.a; path = libLTImagePickerView.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		811584191171BEF4A639E49B49B00445 /* libPods-LTImagePickerView_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-LTImagePickerView_Tests.a"; path = "libPods-LTImagePickerView_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +45,7 @@
 		8B6A28964D933A85CBF8BF4B98D7F1B4 /* Pods-LTImagePickerView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LTImagePickerView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9B29957FB260469F8F1D2C30C7BEA216 /* LTImagePickerCover.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LTImagePickerCover.m; sourceTree = "<group>"; };
+		A12FCA1FE53D1748A0FABC3FD07317B8 /* btn_close_X@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "btn_close_X@2x.png"; sourceTree = "<group>"; };
 		A7744E9A822A621CF3D4CA90F1FAA52B /* LTImagePickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = LTImagePickerView.h; sourceTree = "<group>"; };
 		A7EF6A68F05C62D9A6437FE7838AE103 /* Pods-LTImagePickerView_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LTImagePickerView_Example-resources.sh"; sourceTree = "<group>"; };
 		A831AEFCADFD5AFA17F506A3E4BCE545 /* LTImagePickerViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LTImagePickerViewController.m; sourceTree = "<group>"; };
@@ -53,6 +53,7 @@
 		ACE7B2116099A28E840DE49ECAFA4F76 /* LTImagePickerView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LTImagePickerView.xcconfig; sourceTree = "<group>"; };
 		B428669930FB7AE092A7F6E59CE49B9A /* LTImagePickerViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = LTImagePickerViewController.h; sourceTree = "<group>"; };
 		B515572C6A72B3A337710A490616E946 /* Pods-LTImagePickerView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LTImagePickerView_Example-dummy.m"; sourceTree = "<group>"; };
+		BB2F9EC2192E2941C4C97EE3F875CC41 /* btn_cameraTake@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "btn_cameraTake@2x.png"; sourceTree = "<group>"; };
 		BE0A846FAA7052166D9206F4FF9C29EC /* Pods-LTImagePickerView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LTImagePickerView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		BFF956D526B79FD4EA5647F755A97CF0 /* LTImagePickerCover.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = LTImagePickerCover.h; sourceTree = "<group>"; };
 		C829640DE7B8AA4837F877324C40CED3 /* Pods-LTImagePickerView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LTImagePickerView_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -61,7 +62,6 @@
 		D36206A0C335BBBADB22FE3DF2354216 /* Pods-LTImagePickerView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LTImagePickerView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D6D40B76D06C82E899A2103CC5B26029 /* LTImagePickerView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LTImagePickerView-dummy.m"; sourceTree = "<group>"; };
 		E3BEDA6D92688D47943CC7A88BE7DD65 /* Pods-LTImagePickerView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LTImagePickerView_Tests-dummy.m"; sourceTree = "<group>"; };
-		E7930DDF146D695BF83BB6D30B4B330B /* btn_close_x@2X.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "btn_close_x@2X.png"; sourceTree = "<group>"; };
 		F6C7620834C24EF3DB8F6A4500DE7F30 /* Pods-LTImagePickerView_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LTImagePickerView_Tests-frameworks.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -223,6 +223,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DABE510CB83AC51E8869087E6F65D119 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				BB2F9EC2192E2941C4C97EE3F875CC41 /* btn_cameraTake@2x.png */,
+				A12FCA1FE53D1748A0FABC3FD07317B8 /* btn_close_X@2x.png */,
+				12CC75A8FEC7E7AC661E9A935D40A2AF /* LTImagePickerViewController.xib */,
+			);
+			name = Assets;
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		DED1E197A969B2C02D4A4FCD9D4C7D81 /* LTImagePickerViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,21 +244,10 @@
 			path = LTImagePickerViewController;
 			sourceTree = "<group>";
 		};
-		E0337EE8A013CE418D46F5DB2A3BCEB2 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				44FC793CB1703A187E82E320B95D6ACB /* btn_cameraTake@2x.png */,
-				E7930DDF146D695BF83BB6D30B4B330B /* btn_close_x@2X.png */,
-				50A449124E11BAF217691373034A3C48 /* LTImagePickerViewController.xib */,
-			);
-			name = Assets;
-			path = Assets;
-			sourceTree = "<group>";
-		};
 		FE21A2C02B865064CC2844FE58CBBE7C /* LTImagePickerView */ = {
 			isa = PBXGroup;
 			children = (
-				E0337EE8A013CE418D46F5DB2A3BCEB2 /* Assets */,
+				DABE510CB83AC51E8869087E6F65D119 /* Assets */,
 			);
 			name = LTImagePickerView;
 			path = LTImagePickerView;
