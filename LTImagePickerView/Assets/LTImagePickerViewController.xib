@@ -36,6 +36,16 @@
                     <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相机" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXc-Od-c1m">
+                    <rect key="frame" x="140" y="20" width="200" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="09c-fl-akI"/>
+                        <constraint firstAttribute="height" constant="30" id="pMV-py-BS8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4hK-Gn-9ab">
                     <rect key="frame" x="420" y="0.0" width="60" height="320"/>
                     <subviews>
@@ -94,7 +104,7 @@
                         <constraint firstAttribute="height" constant="44" id="aUZ-pb-sSp"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" image="btn_close_X.png"/>
+                    <state key="normal" image="btn_close_xx.png"/>
                     <connections>
                         <action selector="closeAction:" destination="-1" eventType="touchUpInside" id="oF2-xf-lZ2"/>
                     </connections>
@@ -117,6 +127,8 @@
                 <constraint firstAttribute="trailing" secondItem="4hK-Gn-9ab" secondAttribute="trailing" id="oHg-Tl-1Ef"/>
                 <constraint firstItem="n59-6U-H5j" firstAttribute="leading" secondItem="qmU-af-G6h" secondAttribute="leading" id="qaN-gs-f7U"/>
                 <constraint firstItem="uQ2-kg-K1Z" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="sFY-Nq-oKI"/>
+                <constraint firstItem="wXc-Od-c1m" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="szf-E6-qFX"/>
+                <constraint firstItem="wXc-Od-c1m" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="t4J-nM-azY"/>
                 <constraint firstItem="n59-6U-H5j" firstAttribute="top" secondItem="qmU-af-G6h" secondAttribute="top" id="tj4-ca-bmU"/>
                 <constraint firstItem="wQL-sP-U7K" firstAttribute="top" secondItem="qmU-af-G6h" secondAttribute="top" id="yQM-Jj-CEZ"/>
             </constraints>
@@ -124,6 +136,6 @@
     </objects>
     <resources>
         <image name="btn_cameraTake.png" width="44" height="44"/>
-        <image name="btn_close_X.png" width="25" height="25"/>
+        <image name="btn_close_xx.png" width="25" height="25"/>
     </resources>
 </document>

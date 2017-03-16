@@ -78,12 +78,12 @@ EOM
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "../../LTImagePickerView/Assets/btn_cameraTake@2x.png"
-  install_resource "../../LTImagePickerView/Assets/btn_close_X@2x.png"
+  install_resource "../../LTImagePickerView/Assets/btn_close_xx@2x.png"
   install_resource "../../LTImagePickerView/Assets/LTImagePickerViewController.xib"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "../../LTImagePickerView/Assets/btn_cameraTake@2x.png"
-  install_resource "../../LTImagePickerView/Assets/btn_close_X@2x.png"
+  install_resource "../../LTImagePickerView/Assets/btn_close_xx@2x.png"
   install_resource "../../LTImagePickerView/Assets/LTImagePickerViewController.xib"
 fi
 
