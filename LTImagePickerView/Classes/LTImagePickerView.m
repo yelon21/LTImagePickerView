@@ -46,7 +46,12 @@
     [super layoutSubviews];
     
     self.previewLayer.frame = self.bounds;
-    self.previewLayer.connection.videoOrientation = [self videoOrientationFromCurrentDeviceOrientation];
+    AVCaptureConnection *videoConnection = self.previewLayer.connection;
+    
+    if ([videoConnection isVideoOrientationSupported]) {
+        
+        videoConnection.videoOrientation = [self videoOrientationFromCurrentDeviceOrientation];
+    }
 }
 
 - (void)setup{
@@ -63,7 +68,7 @@
     
     // 3、创建输出流
     self.output = [[AVCaptureStillImageOutput alloc] init];
- 
+    self.output.outputSettings = @{AVVideoCodecKey:AVVideoCodecJPEG, AVVideoScalingModeKey:AVVideoScalingModeResize};
     
     // 5、初始化链接对象（会话对象）
     // 高质量采集率
@@ -85,15 +90,22 @@
     self.previewLayer.frame = self.bounds;
     [self.layer addSublayer:self.previewLayer];
     
-    [self lt_startCarame];
     if ([self.device lockForConfiguration:nil]) {
         
         if ([self.device isFlashModeSupported:AVCaptureFlashModeAuto]) {
             [self.device setFlashMode:AVCaptureFlashModeAuto];
         }
-        
+        if ([self.device isFocusModeSupported:AVCaptureFocusModeContinuousAutoFocus]) {
+            
+            [self.device setFocusMode:AVCaptureFocusModeContinuousAutoFocus];
+        }
         if ([self.device isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeAutoWhiteBalance]) {
             [self.device setWhiteBalanceMode:AVCaptureWhiteBalanceModeAutoWhiteBalance];
+        }
+        
+        if ([self.device isExposureModeSupported:AVCaptureExposureModeAutoExpose]) {
+            
+            [self.device setExposureMode:AVCaptureExposureModeAutoExpose];
         }
         
         [self.device unlockForConfiguration];
@@ -102,6 +114,18 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGestureAction:)];
     tapGesture.numberOfTapsRequired = 1;
     [self addGestureRecognizer:tapGesture];
+    
+    [LTImagePickerView LT_CheckCameraAccess:^(BOOL granted) {
+        
+        if (granted) {
+            
+            [self lt_startCarame];
+        }
+        else{
+        
+            NSLog(@"未授权访问摄像头");
+        }
+    }];
 }
 
 - (AVCaptureVideoOrientation) videoOrientationFromCurrentDeviceOrientation {
@@ -133,22 +157,25 @@
 
 - (void)focusAtPoint:(CGPoint)point{
     
-    CGSize size = self.bounds.size;
+    //CGSize size = self.bounds.size;
     
-    CGPoint focusPoint = CGPointMake( point.y /size.height ,1-point.x/size.width );
+   // CGPoint focusPoint = CGPointMake( point.y /size.height ,1-point.x/size.width );
     
+    CGPoint focusPoint = [self.previewLayer captureDevicePointOfInterestForPoint:point];
     NSError *error;
     if ([self.device lockForConfiguration:&error]) {
         
-        if ([self.device isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
+        if ([self.device isFocusModeSupported:AVCaptureFocusModeContinuousAutoFocus]) {
             [self.device setFocusPointOfInterest:focusPoint];
-            [self.device setFocusMode:AVCaptureFocusModeAutoFocus];
+            [self.device setFocusMode:AVCaptureFocusModeContinuousAutoFocus];
         }
         
         if ([self.device isExposureModeSupported:AVCaptureExposureModeAutoExpose ]) {
             [self.device setExposurePointOfInterest:focusPoint];
             [self.device setExposureMode:AVCaptureExposureModeAutoExpose];
         }
+        self.device.subjectAreaChangeMonitoringEnabled = YES;
+        self.device.focusPointOfInterest = focusPoint;
         
         [self.device unlockForConfiguration];
         
@@ -187,13 +214,19 @@
 - (void)takePhotoAction{
     
     AVCaptureConnection *videoConnection = [self.output connectionWithMediaType:AVMediaTypeVideo];
-    videoConnection.videoOrientation = [self videoOrientationFromCurrentDeviceOrientation];
+    if ([videoConnection isVideoOrientationSupported]) {
+        
+        videoConnection.videoOrientation = [self videoOrientationFromCurrentDeviceOrientation];
+    }
+    
     
     if (!videoConnection) {
         
         [self didPickerImage:nil error:@"图像获取失败"];
         return;
     }
+    
+    videoConnection.videoScaleAndCropFactor = 1;
     
     [self.output captureStillImageAsynchronouslyFromConnection:videoConnection
                                              completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
@@ -207,6 +240,7 @@
                                                  [self lt_stopCarame];
                                                  
                                                  UIImage *image = [UIImage imageWithData:imageData];
+                                                 image = [self fixOrientation:image];
                                                  [self didPickerImage:image error:nil];
                                                  
                                              }];
@@ -222,5 +256,87 @@
     }
 }
 
+- (UIImage *)fixOrientation:(UIImage *)aImage {
+    
+    // No-op if the orientation is already correct
+    if (aImage.imageOrientation == UIImageOrientationUp)
+        return aImage;
+    
+    // We need to calculate the proper transformation to make the image upright.
+    // We do it in 2 steps: Rotate if Left/Right/Down, and then flip if Mirrored.
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    
+    switch (aImage.imageOrientation) {
+        case UIImageOrientationDown:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, aImage.size.width, aImage.size.height);
+            transform = CGAffineTransformRotate(transform, M_PI);
+            break;
+            
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+            transform = CGAffineTransformTranslate(transform, aImage.size.width, 0);
+            transform = CGAffineTransformRotate(transform, M_PI_2);
+            break;
+            
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, 0, aImage.size.height);
+            transform = CGAffineTransformRotate(transform, -M_PI_2);
+            break;
+        default:
+            break;
+    }
+    
+    switch (aImage.imageOrientation) {
+        case UIImageOrientationUpMirrored:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, aImage.size.width, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+            
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, aImage.size.height, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+        default:
+            break;
+    }
+    
+    // Now we draw the underlying CGImage into a new context, applying the transform
+    // calculated above.
+    CGContextRef ctx = CGBitmapContextCreate(NULL, aImage.size.width, aImage.size.height,
+                                             CGImageGetBitsPerComponent(aImage.CGImage), 0,
+                                             CGImageGetColorSpace(aImage.CGImage),
+                                             CGImageGetBitmapInfo(aImage.CGImage));
+    CGContextConcatCTM(ctx, transform);
+    switch (aImage.imageOrientation) {
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            // Grr...
+            CGContextDrawImage(ctx, CGRectMake(0,0,aImage.size.height,aImage.size.width), aImage.CGImage);
+            break;
+            
+        default:
+            CGContextDrawImage(ctx, CGRectMake(0,0,aImage.size.width,aImage.size.height), aImage.CGImage);
+            break;
+    }
+    
+    // And now we just create a new UIImage from the drawing context
+    CGImageRef cgimg = CGBitmapContextCreateImage(ctx);
+    UIImage *img = [UIImage imageWithCGImage:cgimg];
+    CGContextRelease(ctx);
+    CGImageRelease(cgimg);
+    return img;
+}
+#pragma mark check
++ (void)LT_CheckCameraAccess:(void (^)(BOOL granted))handler{
+
+    [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo
+                             completionHandler:handler];
+}
 
 @end

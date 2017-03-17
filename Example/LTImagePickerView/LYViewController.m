@@ -8,6 +8,8 @@
 
 #import "LYViewController.h"
 #import "LTImagePickerViewController.h"
+#import <AVFoundation/AVCaptureDevice.h>
+#import <AVFoundation/AVMediaFormat.h>
 
 @interface LYViewController ()<LTImagePickerDelegate>
 
@@ -27,6 +29,7 @@
     
     LTImagePickerViewController *view = [[LTImagePickerViewController alloc]initWithNibName:@"LTImagePickerViewController" bundle:nil];
     view.delegate = self;
+    view.uneditable = YES;
     [self presentViewController:view
                        animated:YES completion:nil];
 }

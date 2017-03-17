@@ -20,4 +20,5 @@
 
 - (void)lt_stopCarame;
 
++ (void)LT_CheckCameraAccess:(void (^)(BOOL granted))handler;
 @end

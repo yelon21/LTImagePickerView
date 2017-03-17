@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../LTImagePickerView/Classes/LTImagePickerView.m"
-            timestampString = "511340062.206669"
+            timestampString = "511415486.14278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "-focusAtPoint:"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../LTImagePickerView/Classes/LTImagePickerView.m"
-            timestampString = "511340062.206669"
+            timestampString = "511415486.14278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "-tapGestureAction:"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "-focusAtPoint:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

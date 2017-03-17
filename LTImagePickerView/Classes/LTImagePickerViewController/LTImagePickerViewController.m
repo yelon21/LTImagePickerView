@@ -31,12 +31,7 @@
     
     [super viewDidLoad];
     
-    currentImage = nil;
-    self.perviewImageView.image = currentImage;
-    self.doneBtn.hidden = YES;
-    self.retakePhotoBtn.hidden = YES;
-    self.takePhotoBtn.hidden = NO;
-    self.closeBtn.hidden = NO;
+    [self showTakePhotoView];
     __weak typeof(self)weakSelf = self;
     
     [self.imagePicker setBlockImagePickerResult:^(UIImage *image, NSString *error) {
@@ -52,6 +47,23 @@
     }];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+
+    [super viewDidAppear:animated];
+    
+    [LTImagePickerView LT_CheckCameraAccess:^(BOOL granted) {
+        
+        if (!granted) {
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+                [self closeAction:nil];
+            });
+            
+        }
+    }];
+}
+
 -(void)viewDidLayoutSubviews{
 
     [super viewDidLayoutSubviews];
@@ -59,19 +71,29 @@
     CGFloat width = CGRectGetWidth(self.view.bounds);
     
     //210 130 320
-    self.cvoerView.maskSize = CGSizeMake(21.0/32.0*width
-                                         , 13.0/32.0*width);
+    if (self.uneditable) {
+        
+        self.cvoerView.maskSize = CGSizeZero;
+    }
+    else{
+    
+        self.cvoerView.maskSize = CGSizeMake(21.0/32.0*width
+                                             , 13.0/32.0*width);
+    }
 }
 
 - (void)showPreImageView:(UIImage *)image{
 
-    currentImage = image;
-    self.perviewImageView.image = currentImage;
-    self.doneBtn.hidden = NO;
-    self.retakePhotoBtn.hidden = NO;
-    
-    self.takePhotoBtn.hidden = YES;
-    self.closeBtn.hidden = YES;
+    if (image) {
+        
+        currentImage = image;
+        self.perviewImageView.image = currentImage;
+        self.doneBtn.hidden = NO;
+        self.retakePhotoBtn.hidden = NO;
+        
+        self.takePhotoBtn.hidden = YES;
+        self.closeBtn.hidden = YES;
+    }
 }
 
 - (IBAction)closeAction:(id)sender {
@@ -86,6 +108,12 @@
 
 - (IBAction)retakePhotoAction:(id)sender {
     
+    [self.imagePicker lt_startCarame];
+    [self showTakePhotoView];
+}
+
+- (void)showTakePhotoView{
+
     currentImage = nil;
     self.perviewImageView.image = currentImage;
     self.doneBtn.hidden = YES;
@@ -93,8 +121,6 @@
     
     self.takePhotoBtn.hidden = NO;
     self.closeBtn.hidden = NO;
-    
-    [self.imagePicker lt_startCarame];
 }
 
 - (IBAction)doneAction:(id)sender {

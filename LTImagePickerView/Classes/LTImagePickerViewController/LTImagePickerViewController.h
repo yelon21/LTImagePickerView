@@ -13,6 +13,7 @@
 @interface LTImagePickerViewController : UIViewController
 
 @property(nonatomic,weak)id<LTImagePickerDelegate> delegate;
+@property(nonatomic,assign) BOOL uneditable;
 @end
 
 @protocol LTImagePickerDelegate <NSObject>
