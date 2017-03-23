@@ -14,6 +14,11 @@
 
 @property(nonatomic,weak)id<LTImagePickerDelegate> delegate;
 @property(nonatomic,assign) BOOL uneditable;
+
+@property(nonatomic,assign) UIInterfaceOrientationMask interfaceOrientationMask;
+@property(nonatomic,assign) UIInterfaceOrientation interfaceOrientation;
+
+@property(nonatomic, strong) NSString *titleString;
 @end
 
 @protocol LTImagePickerDelegate <NSObject>

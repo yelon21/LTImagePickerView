@@ -30,6 +30,7 @@
     LTImagePickerViewController *view = [[LTImagePickerViewController alloc]initWithNibName:@"LTImagePickerViewController" bundle:nil];
     view.delegate = self;
     view.uneditable = YES;
+    view.titleString = @"请拍摄身份证";
     [self presentViewController:view
                        animated:YES completion:nil];
 }

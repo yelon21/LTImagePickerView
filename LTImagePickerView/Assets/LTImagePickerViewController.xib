@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LTImagePickerViewController">
             <connections>
+                <outlet property="buttonsBackView" destination="4hK-Gn-9ab" id="MHf-8v-uPb"/>
                 <outlet property="closeBtn" destination="uQ2-kg-K1Z" id="tDJ-vM-DS9"/>
                 <outlet property="cvoerView" destination="n59-6U-H5j" id="gg1-ea-l6V"/>
                 <outlet property="doneBtn" destination="HH2-Hr-ZmY" id="DgQ-KT-T1A"/>
@@ -17,6 +18,7 @@
                 <outlet property="perviewImageView" destination="wQL-sP-U7K" id="yi2-j4-Jih"/>
                 <outlet property="retakePhotoBtn" destination="jfx-su-FBO" id="D86-Hg-gvo"/>
                 <outlet property="takePhotoBtn" destination="oLg-X2-vNf" id="zka-mj-GM2"/>
+                <outlet property="titleLabel" destination="wXc-Od-c1m" id="zFi-C9-yMD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

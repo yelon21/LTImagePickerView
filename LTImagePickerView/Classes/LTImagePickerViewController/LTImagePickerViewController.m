@@ -23,6 +23,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *retakePhotoBtn;
 @property (weak, nonatomic) IBOutlet UIButton *closeBtn;
 
+@property (unsafe_unretained, nonatomic) IBOutlet UIView *buttonsBackView;
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *titleLabel;
+
 @end
 
 @implementation LTImagePickerViewController
@@ -30,6 +33,14 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    if (!self.titleString) {
+        self.titleString = @"请拍照";
+    }
+    else{
+    
+        self.titleString = self.titleString;
+    }
     
     [self showTakePhotoView];
     __weak typeof(self)weakSelf = self;
@@ -82,6 +93,12 @@
     }
 }
 
+-(void)setTitleString:(NSString *)titleString{
+    
+    _titleString = titleString;
+    self.titleLabel.text = self.titleString;
+}
+
 - (void)showPreImageView:(UIImage *)image{
 
     if (image) {
@@ -93,6 +110,7 @@
         
         self.takePhotoBtn.hidden = YES;
         self.closeBtn.hidden = YES;
+        self.buttonsBackView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.35];
     }
 }
 
@@ -121,6 +139,7 @@
     
     self.takePhotoBtn.hidden = NO;
     self.closeBtn.hidden = NO;
+    self.buttonsBackView.backgroundColor = [UIColor clearColor];
 }
 
 - (IBAction)doneAction:(id)sender {
@@ -205,12 +224,20 @@
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     
-    return UIInterfaceOrientationMaskLandscapeRight;
+    if (self.interfaceOrientationMask == 0) {
+        
+        return UIInterfaceOrientationMaskLandscapeRight;
+    }
+    return self.interfaceOrientationMask;
 }
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
     
-    return UIInterfaceOrientationLandscapeRight;
+    if (self.interfaceOrientation == 0) {
+        
+        return UIInterfaceOrientationLandscapeRight;
+    }
+    return self.interfaceOrientation;
 }
 
 @end
