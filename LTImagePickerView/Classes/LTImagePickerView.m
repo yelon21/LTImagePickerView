@@ -38,6 +38,7 @@
 
 -(void)awakeFromNib{
     
+    [super awakeFromNib];
     [self setup];
 }
 
@@ -131,19 +132,24 @@
 - (AVCaptureVideoOrientation) videoOrientationFromCurrentDeviceOrientation {
     
     UIInterfaceOrientation interfaceOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    
     switch (interfaceOrientation) {
             
-        case UIInterfaceOrientationPortrait: {
-            return AVCaptureVideoOrientationPortrait;
-        }
         case UIInterfaceOrientationLandscapeLeft: {
+            
             return AVCaptureVideoOrientationLandscapeLeft;
         }
         case UIInterfaceOrientationLandscapeRight: {
+            
             return AVCaptureVideoOrientationLandscapeRight;
         }
         case UIInterfaceOrientationPortraitUpsideDown: {
+            
             return AVCaptureVideoOrientationPortraitUpsideDown;
+        }
+        default: {
+            
+            return AVCaptureVideoOrientationPortrait;
         }
     }
 }
