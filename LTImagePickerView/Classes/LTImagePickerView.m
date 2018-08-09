@@ -100,13 +100,14 @@
             
             [self.device setFocusMode:AVCaptureFocusModeContinuousAutoFocus];
         }
-        if ([self.device isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeAutoWhiteBalance]) {
-            [self.device setWhiteBalanceMode:AVCaptureWhiteBalanceModeAutoWhiteBalance];
+        if ([self.device isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeContinuousAutoWhiteBalance]) {
+            [self.device setWhiteBalanceMode:AVCaptureWhiteBalanceModeContinuousAutoWhiteBalance];
         }
         
-        if ([self.device isExposureModeSupported:AVCaptureExposureModeAutoExpose]) {
-            
-            [self.device setExposureMode:AVCaptureExposureModeAutoExpose];
+        if ([self.device isExposureModeSupported:AVCaptureExposureModeContinuousAutoExposure]) {
+            CGPoint exposurePoint = CGPointMake(0.5f, 0.5f); // 曝光点为中心
+            [self.device setExposurePointOfInterest:exposurePoint];
+            [self.device setExposureMode:AVCaptureExposureModeContinuousAutoExposure];
         }
         
         [self.device unlockForConfiguration];
