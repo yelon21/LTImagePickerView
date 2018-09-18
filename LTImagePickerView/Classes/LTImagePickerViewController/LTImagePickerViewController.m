@@ -150,9 +150,10 @@
         return;
     }
     
-    UIImage *editedImage = [self cutImage:currentImage frame:[self maskFrame]];
+    UIImage *imageSource = [LTImagePickerViewController getScreenshotFromView:self.perviewImageView];
+    UIImage *editedImage = [self cutImage:imageSource frame:[self maskFrame:imageSource]];
     
-    [self didGetImage:currentImage editedImage:editedImage];
+    [self didGetImage:imageSource editedImage:editedImage];
 }
 
 - (UIImage *)cutImage:(UIImage *)image frame:(CGRect)frame{
@@ -170,7 +171,7 @@
     return smallImage;
 }
 
-- (CGRect)maskFrame{
+- (CGRect)maskFrame:(UIImage *)image{
 
     CGFloat width = CGRectGetWidth(self.view.bounds);
     CGFloat height = CGRectGetHeight(self.view.bounds);
@@ -189,8 +190,9 @@
     }
     //
     
-    CGFloat imageWidth = currentImage.size.width;
-    CGFloat imageHeight = currentImage.size.height;
+    CGFloat scale = image.scale;
+    CGFloat imageWidth = image.size.width*scale;
+    CGFloat imageHeight = image.size.height*scale;
     
     CGFloat ptX = (width-maskWidth)/2.0;
     CGFloat ptY = (height-maskHeight)/2.0;
@@ -215,6 +217,36 @@
         
         [self closeAction:nil];
     }
+}
+
++ (UIImage *)getScreenshotFromView:(UIView *)view{
+    
+    if (view) {
+        
+        CGSize size = view.bounds.size;
+        
+        if (size.width * size.height == 0.0) {
+            
+            NSLog(@"bounds.size 不能为0");
+            return nil;
+        }
+        CGFloat scale = [UIScreen mainScreen].scale;
+        CGFloat width = size.width;
+        CGFloat height = size.height;
+        
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, height), YES, scale);
+        if ([view respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
+            [view drawViewHierarchyInRect:CGRectMake(0, 0, width, height)
+                       afterScreenUpdates:YES];
+        } else {
+            [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+        }
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        return image;
+    }
+    return nil;
 }
 
 -(BOOL)shouldAutorotate{
