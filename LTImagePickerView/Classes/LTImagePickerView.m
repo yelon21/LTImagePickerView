@@ -177,12 +177,12 @@
             [self.device setFocusMode:AVCaptureFocusModeContinuousAutoFocus];
         }
         
-        if ([self.device isExposureModeSupported:AVCaptureExposureModeAutoExpose ]) {
+        if ([self.device isExposureModeSupported:AVCaptureExposureModeContinuousAutoExposure ]) {
             [self.device setExposurePointOfInterest:focusPoint];
-            [self.device setExposureMode:AVCaptureExposureModeAutoExpose];
+            [self.device setExposureMode:AVCaptureExposureModeContinuousAutoExposure];
         }
+        
         self.device.subjectAreaChangeMonitoringEnabled = YES;
-        self.device.focusPointOfInterest = focusPoint;
         
         [self.device unlockForConfiguration];
         
